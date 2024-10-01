@@ -47,7 +47,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: srihan-task.json
+          task-definition: srihan-task:2.json
           container-name: container
           image: ${{ steps.build-image.outputs.image }}    
       - name: Deploy Amazon ECS task definition
