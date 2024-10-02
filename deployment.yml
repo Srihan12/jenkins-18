@@ -1,0 +1,33 @@
+create deployment.yml:
+
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: my-deployment
+  labels: 
+     app: regapp
+ 
+spec:
+  replicas: 2 
+  selector:
+    matchLabels:
+      app: regapp
+ 
+  template:
+    metadata:
+      labels:
+        app: regapp
+    spec:
+      containers:
+      - name: regapp
+        image: 976193221390.dkr.ecr.ap-south-1.amazonaws.com/sri:a3076d0379727521d63cf6df37bdb934684ff515
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: ecr-registry-secret
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
