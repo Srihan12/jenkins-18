@@ -18,8 +18,8 @@
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
 
-    <!-- Build for Java 17 while running on JDK 21 -->
-    <!-- If you actually need Java 21 APIs, change this to 21 -->
+    <!-- Build for Java 17 while running on JDK 21.
+         If you need Java 21 APIs, set this to 21. -->
     <maven.compiler.release>17</maven.compiler.release>
   </properties>
 
@@ -38,7 +38,7 @@
 
   <build>
     <plugins>
-      <!-- Modern, JDK‑21 compatible compiler plugin -->
+      <!-- Modern, JDK‑21‑compatible compiler plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -87,7 +87,7 @@
       </plugin>
     </plugins>
 
-    <!-- Keep your pluginManagement (only the compiler version is modernized) -->
+    <!-- Keep pluginManagement; only the compiler version is modernized -->
     <pluginManagement>
       <plugins>
         <plugin>
@@ -141,3 +141,43 @@
         <version>2.2</version>
       </dependency>
 
+      <!-- Test libs (match your original parent POM) -->
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit-dep</artifactId>
+        <version>4.10</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-core</artifactId>
+        <version>1.2.1</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-library</artifactId>
+        <version>1.2.1</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>1.8.5</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <!-- (Optional) Update SCM to your real repo so release/site pick it up correctly -->
+  <scm>
+    <connection>scm:git:https://github.com/Srihan12/jenkins-18.git</connection>
+    <developerConnection>scm:git:git@github.com:Srihan12/jenkins-18.git</developerConnection>
+    <url>https://github.com/Srihan12/jenkins-18</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <prerequisites>
+    <maven>3.0.3</maven>
+  </prerequisites>
+</project>
